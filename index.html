@@ -1,13 +1,272 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Site Agrinho 2025</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Festejando Conexão Campo-Cidade</title>
+    <!-- Inclui o Tailwind CSS para estilização rápida e responsiva -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Define a fonte Inter para todo o corpo do documento */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8f8f8; /* Cor de fundo suave */
+        }
+        /* Estilos para o banner principal */
+        .hero-section {
+            background-image: url('https://placehold.co/1920x800/A0D6B4/333333?text=Campo+e+Cidade+Unidos'); /* Imagem de fundo para o hero */
+            background-size: cover; /* Cobre toda a área */
+            background-position: center; /* Centraliza a imagem */
+            background-attachment: fixed; /* Efeito parallax */
+            height: 80vh; /* Altura da seção */
+            display: flex; /* Flexbox para centralizar conteúdo */
+            align-items: center; /* Alinha itens verticalmente */
+            justify-content: center; /* Alinha itens horizontalmente */
+            text-align: center; /* Centraliza o texto */
+            color: white; /* Cor do texto */
+            position: relative; /* Necessário para o overlay */
+        }
+        /* Overlay para escurecer a imagem de fundo e melhorar a legibilidade do texto */
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.4); /* Overlay preto com 40% de opacidade */
+        }
+        /* Z-index para garantir que o conteúdo fique acima do overlay */
+        .hero-section > * {
+            z-index: 1;
+        }
+        /* Estilos para o formulário de contato */
+        .contact-form input,
+        .contact-form textarea {
+            border: 1px solid #d1d5db; /* Borda cinza */
+            padding: 0.75rem; /* Preenchimento interno */
+            border-radius: 0.5rem; /* Cantos arredondados */
+            width: 100%; /* Largura total */
+            margin-bottom: 1rem; /* Margem inferior */
+        }
+        .contact-form button {
+            background-color: #34D399; /* Cor de fundo do botão (verde esmeralda) */
+            color: white; /* Cor do texto do botão */
+            padding: 0.75rem 1.5rem; /* Preenchimento interno */
+            border-radius: 0.5rem; /* Cantos arredondados */
+            font-weight: 600; /* Peso da fonte */
+            transition: background-color 0.3s ease; /* Transição suave para o hover */
+        }
+        .contact-form button:hover {
+            background-color: #10B981; /* Cor de fundo do botão ao passar o mouse */
+        }
+        /* Estilos para o modal de confirmação */
+        .modal {
+            display: none; /* Escondido por padrão */
+            position: fixed; /* Posição fixa na tela */
+            z-index: 1000; /* Acima de todo o conteúdo */
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto; /* Adiciona scroll se o conteúdo for muito grande */
+            background-color: rgba(0, 0, 0, 0.6); /* Fundo semi-transparente */
+            justify-content: center; /* Centraliza o conteúdo horizontalmente */
+            align-items: center; /* Centraliza o conteúdo verticalmente */
+        }
+        .modal-content {
+            background-color: #fefefe; /* Fundo branco para o conteúdo do modal */
+            margin: auto; /* Margem automática para centralizar */
+            padding: 2.5rem; /* Preenchimento interno */
+            border-radius: 0.75rem; /* Cantos arredondados */
+            width: 90%; /* Largura do modal */
+            max-width: 500px; /* Largura máxima */
+            text-align: center; /* Centraliza o texto */
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra suave */
+        }
+        .close-button {
+            color: #aaa; /* Cor do botão de fechar */
+            float: right; /* Flutua para a direita */
+            font-size: 1.75rem; /* Tamanho da fonte */
+            font-weight: bold; /* Negrito */
+        }
+        .close-button:hover,
+        .close-button:focus {
+            color: black; /* Cor ao passar o mouse ou focar */
+            text-decoration: none; /* Sem sublinhado */
+            cursor: pointer; /* Cursor de ponteiro */
+        }
+    </style>
 </head>
-<body>
-    <h1>Começo do site</h1>
-    <p>Agrinho 2025</p>
+<body class="text-gray-800">
+
+    <!-- Cabeçalho -->
+    <header class="bg-white shadow-md py-4 px-6 fixed w-full z-50">
+        <nav class="container mx-auto flex justify-between items-center">
+            <a href="#home" class="text-2xl font-bold text-green-700">Festejando Conexão</a>
+            <ul class="flex space-x-6">
+                <li><a href="#home" class="text-gray-600 hover:text-green-700 transition duration-300">Início</a></li>
+                <li><a href="#about" class="text-gray-600 hover:text-green-700 transition duration-300">Sobre Nós</a></li>
+                <li><a href="#stories" class="text-gray-600 hover:text-green-700 transition duration-300">Histórias</a></li>
+                <li><a href="#contact" class="text-gray-600 hover:text-green-700 transition duration-300">Contato</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Seção Principal -->
+    <main class="pt-16">
+        <!-- Seção Hero (Início) -->
+        <section id="home" class="hero-section">
+            <div class="relative z-10 p-8 rounded-lg">
+                <h1 class="text-5xl md:text-6xl font-extrabold mb-4 leading-tight drop-shadow-lg">Festejando a Conexão Campo-Cidade</h1>
+                <p class="text-xl md:text-2xl mb-8 drop-shadow-lg">Unindo raízes, cultivando o futuro.</p>
+                <a href="#about" class="bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-8 rounded-full transition duration-300 ease-in-out transform hover:scale-105 shadow-lg">
+                    Saiba Mais
+                </a>
+            </div>
+        </section>
+
+        <!-- Seção Sobre Nós -->
+        <section id="about" class="py-20 px-6 bg-white">
+            <div class="container mx-auto text-center max-w-4xl">
+                <h2 class="text-4xl font-bold mb-8 text-green-800">Sobre Nós</h2>
+                <p class="text-lg leading-relaxed mb-6">
+                    "Festejando Conexão Campo-Cidade" é uma iniciativa dedicada a fortalecer os laços entre a vida rural e urbana. Acreditamos que a valorização do campo e o entendimento de seus processos são fundamentais para uma sociedade mais consciente e sustentável.
+                </p>
+                <p class="text-lg leading-relaxed">
+                    Nosso objetivo é criar pontes, promover o intercâmbio de conhecimentos, celebrar a riqueza cultural e gastronômica de ambas as realidades, e incentivar o consumo responsável de produtos locais.
+                </p>
+            </div>
+        </section>
+
+        <!-- Seção Histórias de Conexão -->
+        <section id="stories" class="py-20 px-6 bg-gray-100">
+            <div class="container mx-auto text-center">
+                <h2 class="text-4xl font-bold mb-12 text-green-800">Histórias de Conexão</h2>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+                    <!-- História 1 -->
+                    <div class="bg-white rounded-lg shadow-lg p-8 transform hover:scale-105 transition duration-300">
+                        <img src="https://placehold.co/400x250/B5EAD7/333333?text=Fazendeiro+e+Chef" alt="Fazendeiro e Chef" class="rounded-md mb-6 w-full h-48 object-cover">
+                        <h3 class="text-2xl font-semibold mb-4 text-green-700">Do Campo à Mesa: A Parceria de João e Maria</h3>
+                        <p class="text-gray-700 leading-relaxed">
+                            Conheça a inspiradora história de João, um pequeno produtor orgânico, e Maria, uma chef de cozinha renomada, que transformaram a paixão por ingredientes frescos em um negócio de sucesso que beneficia a comunidade.
+                        </p>
+                    </div>
+                    <!-- História 2 -->
+                    <div class="bg-white rounded-lg shadow-lg p-8 transform hover:scale-105 transition duration-300">
+                        <img src="https://placehold.co/400x250/FFDDC1/333333?text=Voluntários+na+Roça" alt="Voluntários na Roça" class="rounded-md mb-6 w-full h-48 object-cover">
+                        <h3 class="text-2xl font-semibold mb-4 text-green-700">Voluntariado na Roça: A Experiência de Ana</h3>
+                        <p class="text-gray-700 leading-relaxed">
+                            Ana, uma estudante da cidade, passou suas férias em uma fazenda familiar, aprendendo sobre a vida no campo e ajudando na colheita. Uma experiência que mudou sua perspectiva sobre a origem dos alimentos.
+                        </p>
+                    </div>
+                    <!-- História 3 -->
+                    <div class="bg-white rounded-lg shadow-lg p-8 transform hover:scale-105 transition duration-300">
+                        <img src="https://placehold.co/400x250/C7CEEA/333333?text=Feira+Orgânica" alt="Feira Orgânica" class="rounded-md mb-6 w-full h-48 object-cover">
+                        <h3 class="text-2xl font-semibold mb-4 text-green-700">Feira Orgânica: O Ponto de Encontro</h3>
+                        <p class="text-gray-700 leading-relaxed">
+                            Como a feira orgânica local se tornou um vibrante ponto de encontro, onde produtores e consumidores da cidade se conectam, trocam ideias e fortalecem a economia solidária.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção Contato -->
+        <section id="contact" class="py-20 px-6 bg-gray-200">
+            <div class="container mx-auto text-center max-w-xl">
+                <h2 class="text-4xl font-bold mb-8 text-green-800">Entre em Contato</h2>
+                <p class="text-lg leading-relaxed mb-8">
+                    Tem alguma pergunta, sugestão ou quer saber mais sobre como participar? Envie-nos uma mensagem!
+                </p>
+                <form id="contactForm" class="contact-form bg-white p-8 rounded-lg shadow-lg">
+                    <input type="text" id="name" placeholder="Seu Nome" required class="focus:ring-green-500 focus:border-green-500">
+                    <input type="email" id="email" placeholder="Seu E-mail" required class="focus:ring-green-500 focus:border-green-500">
+                    <textarea id="message" rows="5" placeholder="Sua Mensagem" required class="focus:ring-green-500 focus:border-green-500"></textarea>
+                    <button type="submit">Enviar Mensagem</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <!-- Rodapé -->
+    <footer class="bg-gray-800 text-white py-8 px-6">
+        <div class="container mx-auto text-center">
+            <p class="mb-4">&copy; 2025 Festejando Conexão Campo-Cidade. Todos os direitos reservados.</p>
+            <div class="flex justify-center space-x-6">
+                <a href="#" class="hover:text-green-400 transition duration-300">Facebook</a>
+                <a href="#" class="hover:text-green-400 transition duration-300">Instagram</a>
+                <a href="#" class="hover:text-green-400 transition duration-300">Twitter</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modal de Confirmação -->
+    <div id="confirmationModal" class="modal">
+        <div class="modal-content">
+            <span class="close-button" id="closeModalBtn">&times;</span>
+            <h3 class="text-3xl font-bold text-green-700 mb-4">Mensagem Enviada!</h3>
+            <p class="text-lg text-gray-700">Agradecemos seu contato. Retornaremos em breve!</p>
+            <button id="okModalBtn" class="mt-6 bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-6 rounded-full transition duration-300">
+                OK
+            </button>
+        </div>
+    </div>
+
+    <script>
+        // JavaScript para o formulário de contato e modal
+        document.getElementById('contactForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Previne o envio padrão do formulário
+
+            // Simula o envio da mensagem (em um site real, você enviaria para um servidor)
+            console.log('Formulário enviado!');
+            console.log('Nome:', document.getElementById('name').value);
+            console.log('Email:', document.getElementById('email').value);
+            console.log('Mensagem:', document.getElementById('message').value);
+
+            // Exibe o modal de confirmação
+            const modal = document.getElementById('confirmationModal');
+            modal.style.display = 'flex'; // Altera para flex para centralizar o conteúdo
+
+            // Limpa o formulário após o "envio"
+            document.getElementById('contactForm').reset();
+        });
+
+        // Fecha o modal ao clicar no 'x' ou no botão 'OK'
+        document.getElementById('closeModalBtn').addEventListener('click', function() {
+            document.getElementById('confirmationModal').style.display = 'none';
+        });
+
+        document.getElementById('okModalBtn').addEventListener('click', function() {
+            document.getElementById('confirmationModal').style.display = 'none';
+        });
+
+        // Fecha o modal ao clicar fora do conteúdo do modal
+        window.addEventListener('click', function(event) {
+            const modal = document.getElementById('confirmationModal');
+            if (event.target == modal) {
+                modal.style.display = 'none';
+            }
+        });
+
+        // JavaScript para rolagem suave da navegação
+        document.querySelectorAll('nav a').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault(); // Previne o comportamento padrão do link
+
+                const targetId = this.getAttribute('href'); // Obtém o ID da seção alvo
+                const targetElement = document.querySelector(targetId); // Seleciona o elemento alvo
+
+                // Rola suavemente até o elemento
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - document.querySelector('header').offsetHeight, // Ajusta para a altura do cabeçalho fixo
+                        behavior: 'smooth' // Rolagem suave
+                    });
+                }
+            });
+        });
+    </script>
 </body>
 </html>
