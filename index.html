@@ -4,6 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Festejando Conexão Campo-Cidade</title>
+    <!-- Configuração do Tailwind CSS para modo noturno baseado em classe -->
+    <script>
+        tailwind.config = {
+            darkMode: 'class', // Habilita o modo noturno baseado na classe 'dark'
+        }
+    </script>
     <!-- Inclui o Tailwind CSS para estilização rápida e responsiva -->
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
@@ -11,11 +17,36 @@
         /* Define a fonte Inter para todo o corpo do documento */
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #f8f8f8; /* Cor de fundo suave */
+            background-color: #f8f8f8; /* Cor de fundo suave (modo claro) */
         }
+
+        /* Estilos para o modo noturno */
+        html.dark body {
+            background-color: #1a202c; /* Cor de fundo escura para o modo noturno */
+            color: #e2e8f0; /* Cor do texto clara para o modo noturno */
+        }
+
+        /* Estilos para o cabeçalho no modo noturno */
+        html.dark header {
+            background-color: #2d3748; /* Fundo mais escuro para o cabeçalho */
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3); /* Sombra mais visível */
+        }
+
+        html.dark header a {
+            color: #cbd5e0; /* Cor do link no cabeçalho */
+        }
+
+        html.dark header a.text-green-700 {
+            color: #68d391; /* Cor do título principal no modo noturno */
+        }
+
+        html.dark header a:hover {
+            color: #68d391; /* Cor do link ao passar o mouse */
+        }
+
         /* Estilos para o banner principal */
         .hero-section {
-            background-image: url('https://placehold.co/1920x800/A0D6B4/333333?text=Campo+e+Cidade+Unidos'); /* Imagem de fundo para o hero */
+            background-image: url(https://images.pexels.com/photos/974314/pexels-photo-974314.jpeg); /* Imagem de fundo para o hero */
             background-size: cover; /* Cobre toda a área */
             background-position: center; /* Centraliza a imagem */
             background-attachment: fixed; /* Efeito parallax */
@@ -41,15 +72,53 @@
         .hero-section > * {
             z-index: 1;
         }
+
+        /* Estilos para as seções no modo noturno */
+        html.dark section {
+            background-color: #2d3748; /* Fundo escuro para as seções */
+            color: #e2e8f0; /* Cor do texto clara */
+        }
+
+        html.dark section#about, html.dark section#contact {
+            background-color: #1a202c; /* Fundo ainda mais escuro para seções específicas */
+        }
+
+        html.dark h2, html.dark h3 {
+            color: #68d391; /* Cor do título no modo noturno */
+        }
+
+        html.dark p {
+            color: #cbd5e0; /* Cor do parágrafo no modo noturno */
+        }
+
+        /* Estilos para os cards de história no modo noturno */
+        html.dark #stories .bg-white {
+            background-color: #2d3748; /* Fundo escuro para os cards */
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3); /* Sombra mais visível */
+        }
+        html.dark #stories .text-gray-700 {
+            color: #cbd5e0; /* Cor do texto dos cards */
+        }
+
         /* Estilos para o formulário de contato */
         .contact-form input,
         .contact-form textarea {
-            border: 1px solid #d1d5db; /* Borda cinza */
+            border: 1px solid #d1d5db; /* Borda cinza (modo claro) */
             padding: 0.75rem; /* Preenchimento interno */
             border-radius: 0.5rem; /* Cantos arredondados */
             width: 100%; /* Largura total */
             margin-bottom: 1rem; /* Margem inferior */
+            background-color: white; /* Fundo branco (modo claro) */
+            color: #333; /* Cor do texto (modo claro) */
         }
+
+        html.dark .contact-form input,
+        html.dark .contact-form textarea {
+            border-color: #4a5568; /* Borda mais escura para o modo noturno */
+            background-color: #2d3748; /* Fundo escuro para os campos */
+            color: #e2e8f0; /* Cor do texto clara */
+        }
+
         .contact-form button {
             background-color: #34D399; /* Cor de fundo do botão (verde esmeralda) */
             color: white; /* Cor do texto do botão */
@@ -61,6 +130,7 @@
         .contact-form button:hover {
             background-color: #10B981; /* Cor de fundo do botão ao passar o mouse */
         }
+
         /* Estilos para o modal de confirmação */
         .modal {
             display: none; /* Escondido por padrão */
@@ -76,7 +146,7 @@
             align-items: center; /* Centraliza o conteúdo verticalmente */
         }
         .modal-content {
-            background-color: #fefefe; /* Fundo branco para o conteúdo do modal */
+            background-color: #fefefe; /* Fundo branco para o conteúdo do modal (modo claro) */
             margin: auto; /* Margem automática para centralizar */
             padding: 2.5rem; /* Preenchimento interno */
             border-radius: 0.75rem; /* Cantos arredondados */
@@ -85,17 +155,82 @@
             text-align: center; /* Centraliza o texto */
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra suave */
         }
+
+        html.dark .modal-content {
+            background-color: #2d3748; /* Fundo escuro para o modal no modo noturno */
+            color: #e2e8f0; /* Cor do texto clara */
+        }
+
+        html.dark .modal-content h3 {
+            color: #68d391; /* Cor do título do modal */
+        }
+
+        html.dark .modal-content p {
+            color: #cbd5e0; /* Cor do texto do modal */
+        }
+
         .close-button {
-            color: #aaa; /* Cor do botão de fechar */
+            color: #aaa; /* Cor do botão de fechar (modo claro) */
             float: right; /* Flutua para a direita */
             font-size: 1.75rem; /* Tamanho da fonte */
             font-weight: bold; /* Negrito */
         }
         .close-button:hover,
         .close-button:focus {
-            color: black; /* Cor ao passar o mouse ou focar */
+            color: black; /* Cor ao passar o mouse ou focar (modo claro) */
             text-decoration: none; /* Sem sublinhado */
             cursor: pointer; /* Cursor de ponteiro */
+        }
+
+        html.dark .close-button {
+            color: #cbd5e0; /* Cor do botão de fechar no modo noturno */
+        }
+        html.dark .close-button:hover,
+        html.dark .close-button:focus {
+            color: white; /* Cor ao passar o mouse ou focar no modo noturno */
+        }
+
+        /* Estilos para o rodapé no modo noturno */
+        html.dark footer {
+            background-color: #1a202c; /* Fundo mais escuro para o rodapé */
+            color: #e2e8f0; /* Cor do texto clara */
+        }
+
+        html.dark footer a {
+            color: #cbd5e0; /* Cor do link no rodapé */
+        }
+
+        html.dark footer a:hover {
+            color: #68d391; /* Cor do link ao passar o mouse */
+        }
+
+        /* Estilo do botão de alternância de modo noturno */
+        #darkModeToggle {
+            background-color: #f0f0f0; /* Fundo claro */
+            color: #333; /* Texto escuro */
+            border: 1px solid #ccc;
+            padding: 0.5rem 1rem;
+            border-radius: 9999px; /* Botão arredondado */
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.875rem; /* Tamanho da fonte menor */
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        html.dark #darkModeToggle {
+            background-color: #4a5568; /* Fundo escuro */
+            color: #e2e8f0; /* Texto claro */
+            border-color: #667eea;
+        }
+
+        #darkModeToggle:hover {
+            background-color: #e2e2e2;
+        }
+
+        html.dark #darkModeToggle:hover {
+            background-color: #667eea;
         }
     </style>
 </head>
@@ -105,11 +240,18 @@
     <header class="bg-white shadow-md py-4 px-6 fixed w-full z-50">
         <nav class="container mx-auto flex justify-between items-center">
             <a href="#home" class="text-2xl font-bold text-green-700">Festejando Conexão</a>
-            <ul class="flex space-x-6">
+            <ul class="flex space-x-6 items-center">
                 <li><a href="#home" class="text-gray-600 hover:text-green-700 transition duration-300">Início</a></li>
                 <li><a href="#about" class="text-gray-600 hover:text-green-700 transition duration-300">Sobre Nós</a></li>
                 <li><a href="#stories" class="text-gray-600 hover:text-green-700 transition duration-300">Histórias</a></li>
                 <li><a href="#contact" class="text-gray-600 hover:text-green-700 transition duration-300">Contato</a></li>
+                <li>
+                    <!-- Botão de alternância de modo noturno -->
+                    <button id="darkModeToggle" class="flex items-center space-x-2">
+                        <span id="darkModeIcon">☀️</span> <!-- Ícone inicial -->
+                        <span id="darkModeText">Modo Noturno</span>
+                    </button>
+                </li>
             </ul>
         </nav>
     </header>
@@ -266,6 +408,45 @@
                     });
                 }
             });
+        });
+
+        // Lógica do Modo Noturno
+        const darkModeToggle = document.getElementById('darkModeToggle');
+        const htmlElement = document.documentElement; // O elemento <html>
+        const darkModeIcon = document.getElementById('darkModeIcon');
+        const darkModeText = document.getElementById('darkModeText');
+
+        // Função para aplicar o modo com base na preferência
+        function applyDarkModePreference() {
+            const isDarkMode = localStorage.getItem('darkMode') === 'true';
+            if (isDarkMode) {
+                htmlElement.classList.add('dark');
+                darkModeIcon.textContent = '🌙'; // Ícone de lua
+                darkModeText.textContent = 'Modo Claro';
+            } else {
+                htmlElement.classList.remove('dark');
+                darkModeIcon.textContent = '☀️'; // Ícone de sol
+                darkModeText.textContent = 'Modo Noturno';
+            }
+        }
+
+        // Aplica a preferência ao carregar a página
+        applyDarkModePreference();
+
+        // Adiciona o evento de clique ao botão de alternância
+        darkModeToggle.addEventListener('click', () => {
+            const isCurrentlyDark = htmlElement.classList.contains('dark');
+            if (isCurrentlyDark) {
+                htmlElement.classList.remove('dark');
+                localStorage.setItem('darkMode', 'false');
+                darkModeIcon.textContent = '☀️'; // Ícone de sol
+                darkModeText.textContent = 'Modo Noturno';
+            } else {
+                htmlElement.classList.add('dark');
+                localStorage.setItem('darkMode', 'true');
+                darkModeIcon.textContent = '🌙'; // Ícone de lua
+                darkModeText.textContent = 'Modo Claro';
+            }
         });
     </script>
 </body>
